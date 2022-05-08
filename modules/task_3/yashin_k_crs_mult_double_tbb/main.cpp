@@ -43,8 +43,7 @@ TEST(Yashin_Kirill_Sparse_Matrix, Test_Tbb_Matrix_Multiplication_Size_100) {
               << "\nNo TBB time for size 100: " << (t2_no_tbb - t1_no_tbb).seconds()
               << "\nAcceleration: " << acceleration << std::endl;
 
-    ASSERT_TRUE(sparse_result == sparse_result_tbb);
-    ASSERT_TRUE(sparse_result == _sparse_result);
+    ASSERT_TRUE(_sparse_result == sparse_result_tbb);
 }
 
 TEST(Yashin_Kirill_Sparse_Matrix, Test_Tbb_Matrix_Multiplication_Size_250) {
@@ -70,8 +69,7 @@ TEST(Yashin_Kirill_Sparse_Matrix, Test_Tbb_Matrix_Multiplication_Size_250) {
               << "\nNo TBB time for size 250: " << (t2_no_tbb - t1_no_tbb).seconds()
               << "\nAcceleration: " << acceleration << std::endl;
 
-    ASSERT_TRUE(sparse_result == sparse_result_tbb);
-    ASSERT_TRUE(sparse_result == _sparse_result);
+    ASSERT_TRUE(_sparse_result == sparse_result_tbb);
 }
 
 TEST(Yashin_Kirill_Sparse_Matrix, Test_Tbb_Matrix_Multiplication_Size_500) {
@@ -97,13 +95,12 @@ TEST(Yashin_Kirill_Sparse_Matrix, Test_Tbb_Matrix_Multiplication_Size_500) {
               << "\nNo TBB time for size 500: " << (t2_no_tbb - t1_no_tbb).seconds()
               << "\nAcceleration: " << acceleration << std::endl;
 
-    ASSERT_TRUE(sparse_result == sparse_result_tbb);
-    ASSERT_TRUE(sparse_result == _sparse_result);
+    ASSERT_TRUE(_sparse_result == sparse_result_tbb);
 }
 
-TEST(Yashin_Kirill_Sparse_Matrix, Test_Tbb_Matrix_Multiplication_Size_1000) {
-    Matrix A(random_matrix(1000, 1000, 20));
-    Matrix B(random_matrix(1000, 1000, 20));
+TEST(Yashin_Kirill_Sparse_Matrix, Test_Tbb_Matrix_Multiplication_Size_500_2) {
+    Matrix A(random_matrix(500, 500, 10));
+    Matrix B(random_matrix(500, 500, 10));
 
     sparse_matrix sA(A);
     sparse_matrix sB(B);
@@ -120,10 +117,9 @@ TEST(Yashin_Kirill_Sparse_Matrix, Test_Tbb_Matrix_Multiplication_Size_1000) {
     tbb::tick_count t2_no_tbb = tbb::tick_count::now();
 
     double acceleration = (t2_no_tbb - t1_no_tbb).seconds() / (t2_tbb - t1_tbb).seconds();
-    std::cout << "TBB time for size 1000: " << (t2_tbb - t1_tbb).seconds()
-              << "\nNo TBB time for size 1000: " << (t2_no_tbb - t1_no_tbb).seconds()
+    std::cout << "TBB time for size 500: " << (t2_tbb - t1_tbb).seconds()
+              << "\nNo TBB time for size 500: " << (t2_no_tbb - t1_no_tbb).seconds()
               << "\nAcceleration: " << acceleration << std::endl;
 
-    ASSERT_TRUE(sparse_result == sparse_result_tbb);
-    ASSERT_TRUE(sparse_result == _sparse_result);
+    ASSERT_TRUE(_sparse_result == sparse_result_tbb);
 }

@@ -22,7 +22,7 @@ bool sparse_matrix::operator== (const sparse_matrix& matrix) const& {
     }
 
     for (size_t i = 0; i < values.size(); i++) {
-       if (std::fabs(matrix.values[i] - values[i]) > 0.001)
+       if (std::fabs(matrix.values[i] - values[i]) > 0.01)
             return false;
     }
     return true;
